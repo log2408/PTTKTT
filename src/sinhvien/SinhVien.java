@@ -54,6 +54,7 @@ public class SinhVien {
 		}
 	}
 	public static void main(String[] args) {
-		
+		SinhVien sv = new SinhVien("long");
+		sv.NhapdiemmonSV(new Mon("toan", 1), 5);
 	}
 }

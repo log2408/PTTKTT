@@ -45,6 +45,6 @@ public class DijkstraAllPairs {
 		String nameFile = "\\Users\\User\\Desktop\\Javapro\\baitapTet\\src\\text.txt";
 		EdgeWeightedDigraph g = new EdgeWeightedDigraph(nameFile);
 		DijkstraAllPairs d = new DijkstraAllPairs(g);
-		d.findAllPaths(1, 5);
+		d.findAllPaths(1, 6);
 	}
 }

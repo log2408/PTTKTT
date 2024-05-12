@@ -5,5 +5,6 @@
  * 
  */
 module PhanTichThietKeThuatToan {
-	requires java.base;
+	 requires java.base;
+
 }
