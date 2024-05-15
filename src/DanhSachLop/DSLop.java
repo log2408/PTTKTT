@@ -11,11 +11,11 @@ public class DSLop {
 	private ST<String, SET<SinhVien>> stAddress;
 	private SinhVien[] arr;
 	public DSLop(String nameFile) {
-		arr = new SinhVien[14];
+		arr = new SinhVien[12];
 		stAddress = new ST<String, SET<SinhVien>>();
 		int t = 0;
 		try (BufferedReader reader = new BufferedReader(new FileReader(nameFile))) {
-            String line = reader.readLine();
+            String line;
             Mon mon;
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split("\\s{2,}");
@@ -72,8 +72,8 @@ public class DSLop {
 		}
 	}
 	public static void main(String[] args) {
-		String csvFilePath = "\\Users\\User\\Desktop\\Javapro\\PhanTichThietKeThuatToan\\src\\DanhSachLop\\tmp.csv";
-		DSLop d = new DSLop(csvFilePath);
-		d.queryAddress("Hà Nội");
+		String name = "src/DanhSachLop/test.csv";
+		DSLop d = new DSLop(name);
+		d.queryAddress("Th�i b�nh");
 	}
 }

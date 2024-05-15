@@ -54,7 +54,18 @@ public class SinhVien {
 		}
 	}
 	public static void main(String[] args) {
-		SinhVien sv = new SinhVien("long");
+		SinhVien sv = new SinhVien("A");
 		sv.NhapdiemmonSV(new Mon("toan", 1), 5);
+		sv.NhapdiemmonSV(new Mon("van", 1), 6);
+		sv.NhapdiemmonSV(new Mon("anh", 1), 2);
+		sv.NhapdiemmonSV(new Mon("toan", 2), 8);
+		sv.NhapdiemmonSV(new Mon("li", 2), 9);
+		sv.NhapdiemmonSV(new Mon("hoa", 2), 10);
+		sv.output();
+		System.out.print("Điểm trung bình cộng của cả năm: ");
+		sv.TBC();
+		System.out.println();
+		System.out.print("Điểm trung bình cộng của học kì 2: ");
+		sv.TBCHocKy(2);
 	}
 }

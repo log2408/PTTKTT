@@ -26,7 +26,7 @@ public class DijkstraAllPairs {
 		path.removeLast();
         visited[v] = false;
 	}
-	void findAllPaths(int v, int w) {
+	public void findAllPaths(int v, int w) {
         boolean visited[] = new boolean[this.v];
         LinkedList<Integer> path = new LinkedList<Integer>();
         DFS(v, w, visited, path);
@@ -42,9 +42,9 @@ public class DijkstraAllPairs {
 		System.out.println();
 	}
 	public static void main(String[] args) {
-		String nameFile = "\\Users\\User\\Desktop\\Javapro\\baitapTet\\src\\text.txt";
+		String nameFile = "src/dijkstraAllPairs/text.txt";
 		EdgeWeightedDigraph g = new EdgeWeightedDigraph(nameFile);
 		DijkstraAllPairs d = new DijkstraAllPairs(g);
-		d.findAllPaths(1, 6);
+		d.findAllPaths(1, 4);
 	}
 }

@@ -31,7 +31,7 @@ public class FileFrequencyindex {
 		return 0;
 	}
 	public static void main(String[] args) throws IOException {
-		String name = "\\Users\\User\\Desktop\\Javapro\\PhanTichThietKeThuatToan\\src\\GTCacChuongTrinhUngDung\\tale.txt";
+		String name = "src/FileFrequencyIndex/tale.txt";
 		FileFrequencyindex f = new FileFrequencyindex(name);
 		System.out.println(f.query("business"));
 	}

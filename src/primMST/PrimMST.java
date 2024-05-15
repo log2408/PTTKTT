@@ -1,47 +1,64 @@
 package primMST;
 
 public class PrimMST {
-	private double weight;
-	private Queue<Edge> mst = new Queue<Edge>(); 
+	private static final double FLOATING_POINT_EPSILON = 1.0E-12;
+    private Edge[] edgeTo;   
+    private double[] distTo;   
+    private boolean[] marked; 
+    private IndexMinPQ<Double> pq;
 	public PrimMST(EdgeWeightedGraph G) {
-        boolean[] marked = new boolean[G.V()];
-        MinPQ<Edge> pq = new MinPQ<Edge>();
-        visit(G, 0, marked, pq);
+        edgeTo = new Edge[G.V()];
+        distTo = new double[G.V()];
+        marked = new boolean[G.V()];
+        pq = new IndexMinPQ<Double>(G.V());
+        for (int v = 0; v < G.V(); v++)
+            distTo[v] = Double.POSITIVE_INFINITY;
+        for (int v = 0; v < G.V(); v++) 
+            if (!marked[v]) prim(G, v); 
+    }
+    private void prim(EdgeWeightedGraph G, int s) {
+        distTo[s] = 0.0;
+        pq.insert(s, distTo[s]);
         while (!pq.isEmpty()) {
-            Edge e = pq.delMin();
-            int v = e.either(), w = e.other(v);
-            if (marked[v] && marked[w]) continue;
-            mst.enqueue(e);
-            weight += e.weight();
-            if (!marked[v]) visit(G, v, marked, pq);
-            if (!marked[w]) visit(G, w, marked, pq);
+            int v = pq.delMin();
+            scan(G, v);
         }
-	}
-	private void visit(EdgeWeightedGraph G, int v, boolean[] marked, MinPQ<Edge> pq) {
-        marked[v] = true; 
+    }
+    private void scan(EdgeWeightedGraph G, int v) {
+        marked[v] = true;
         for (Edge e : G.adj(v)) {
-            if (!marked[e.other(v)]) {
-                pq.insert(e); 
+            int w = e.other(v);
+            if (marked[w]) continue;      
+            if (e.weight() < distTo[w]) {
+                distTo[w] = e.weight();
+                edgeTo[w] = e;
+                if (pq.contains(w)) pq.decreaseKey(w, distTo[w]);
+                else                pq.insert(w, distTo[w]);
             }
         }
     }
-	public Iterable<Edge> edges() {
+    public Iterable<Edge> edges() {
+        Queue<Edge> mst = new Queue<Edge>();
+        for (int v = 0; v < edgeTo.length; v++) {
+            Edge e = edgeTo[v];
+            if (e != null) {
+                mst.enqueue(e);
+            }
+        }
         return mst;
     }
     public double weight() {
+        double weight = 0.0;
+        for (Edge e : edges())
+            weight += e.weight();
         return weight;
     }
     public static void main(String[] args) {
-    	String nameFile = "\\Users\\User\\Desktop\\Javapro\\PhanTichThietKeThuatToan\\src\\primMST\\test.txt";
-    	EdgeWeightedGraph g = new EdgeWeightedGraph(nameFile);
-    	PrimMST p = new PrimMST(g);
-    	for(Edge e : g.edges()) {
-    		System.out.println(e.toString());
-    	}
-    	System.out.println();
-    	for(Edge e : p.mst) {
-    		System.out.println(e.toString());
-    	}
-    	System.out.println(p.weight);
+		EdgeWeightedGraph g = new EdgeWeightedGraph("src/primMST/test.txt");
+		PrimMST p = new PrimMST(g);
+		System.out.println(p.weight());
+		for (Edge e : p.edges()) {
+			System.out.println(e.toString());
+		}
 	}
 }

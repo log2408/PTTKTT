@@ -60,8 +60,8 @@ public class TopM {
 		}
 	}
 	public static void main(String[] args) {
-		String csvFilePath = "\\Users\\User\\Desktop\\Javapro\\PhanTichThietKeThuatToan\\src\\DanhSachLop\\tmp.csv";
+		String csvFilePath = "src/TopMSinhVien/test.csv";
 		TopM t = new TopM();
-		t.TopMName(csvFilePath, 4);
+		t.TopMTBC(csvFilePath, 4);
 	}
 }

@@ -57,5 +57,6 @@ public class KnapsackImp {
 		items[5] = new Item(470, 294);
 		KnapsackImp knapsack = new KnapsackImp(2000, items);
 		knapsack.inBag();
+		System.out.println(knapsack.maxProfit());
 	}
 }

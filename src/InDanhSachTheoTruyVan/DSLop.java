@@ -54,9 +54,9 @@ public class DSLop {
 		}
 	}
 	public static void main(String[] args) throws IOException {
-		String csvFilePath = "\\Users\\User\\Desktop\\Javapro\\PhanTichThietKeThuatToan\\src\\DanhSachLop\\tmp.csv";
+		String csvFilePath = "src/TopMSinhVien/test.csv";
 		DSLop ds = new DSLop(csvFilePath, 4);
-		ds.InDanhSachDonHuong("Thái bình");
+		ds.InDanhSachDonHuong("");
 		System.out.println();
 		ds.InDanhSachSinhVien();
 	}

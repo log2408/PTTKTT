@@ -3,6 +3,7 @@ package primMST;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
+
 public class Queue<Item> implements Iterable<Item> {
     private Node<Item> first;   
     private Node<Item> last;     

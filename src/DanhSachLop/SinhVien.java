@@ -1,6 +1,8 @@
 package DanhSachLop;
 
+import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
 
 import sinhvien.Mon;
 
@@ -81,7 +83,7 @@ public class SinhVien implements Comparable<SinhVien>{
 	}
 	@Override
 	public String toString() {
-		return this.maSV + " " + this.name + " " + this.age.toString();
+		return this.maSV + " " + this.name + " " + this.age.toString() + " " + this.address;
 	}
 	@Override
 	public int compareTo(SinhVien o) {
@@ -124,6 +126,9 @@ public class SinhVien implements Comparable<SinhVien>{
             return new Comparator<SinhVien>() {
                 @Override
                 public int compare(SinhVien sv1, SinhVien sv2) {
+                	if (sv2 == null) {
+                        return -1; 
+                    }
                 	double tb1 = sv1.TBCHocKy(hocKy);
                     double tb2 = sv2.TBCHocKy(hocKy);
                     if(Double.compare(tb2, tb1) != 0) {

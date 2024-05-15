@@ -43,7 +43,7 @@ public class DSSinhVien {
         }
 	}
 	public static void main(String[] args) {
-		DSSinhVien ds = new DSSinhVien("\\Users\\User\\Desktop\\Javapro\\PhanTichThietKeThuatToan\\src\\DanhSachLop\\tmp.csv");
+		DSSinhVien ds = new DSSinhVien("src/DSSinhVien_HashMap/test.csv");
 		ds.ganMaSV("UTC");
 	}
 }

@@ -140,8 +140,9 @@ public class IndexMaxPQ<Key extends Comparable<Key>> implements Iterable<Integer
             pq.insert(i, strings[i]);
         }
         for (Integer i : pq) {
-			System.out.println(i + " " + pq.keyOf(i));
+			System.out.print(i + " " + pq.keyOf(i) + "   ");
 		}
+        System.out.println();
         System.out.println();
         Random random = new Random();
         for (int i = 0; i < strings.length; i++) {

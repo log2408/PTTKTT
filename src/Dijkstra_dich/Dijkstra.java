@@ -36,11 +36,11 @@ public class Dijkstra {
 	public double distFrom(int v) {
 		return this.distFrom[v];
 	}
-	public boolean hasPathTo(int v) {
+	public boolean hasPathFrom(int v) {
 		return this.distFrom[v] < Double.POSITIVE_INFINITY;
 	}
-	public Iterable<DirectedEdge> pathTo(int v){
-		if (!hasPathTo(v)) return null;
+	public Iterable<DirectedEdge> pathFrom(int v){
+		if (!hasPathFrom(v)) return null;
 		Stack<DirectedEdge> tmp = new Stack<DirectedEdge>();
 		Stack<DirectedEdge> path = new Stack<DirectedEdge>();
         for (DirectedEdge e = edgeFrom[v]; e != null; e = edgeFrom[e.to()]) {
@@ -52,7 +52,7 @@ public class Dijkstra {
         return path;
 	}
 	public static void main(String[] args) {
-		String nameFile = "\\Users\\User\\Desktop\\Javapro\\baitapTet\\src\\text.txt";
+		String nameFile = "src/Dijkstra_dich/text.txt";
 		EdgeWeightedDigraph g = new EdgeWeightedDigraph(nameFile);
 		int s = 0;
 		Dijkstra sp = new Dijkstra(g, s);
@@ -60,8 +60,8 @@ public class Dijkstra {
 		System.out.println(s + "->" + s);
 		for(int i = 1; i < g.V(); i++) {
 			System.out.println(i + " to " + s + "( " + sp.distFrom(i) + "): ");
-			if(sp.hasPathTo(i)) {
-				for(DirectedEdge x : sp.pathTo(i)) {
+			if(sp.hasPathFrom(i)) {
+				for(DirectedEdge x : sp.pathFrom(i)) {
 					System.out.print(x + "    ");
 				}
 			} else {

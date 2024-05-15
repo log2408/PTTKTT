@@ -2,6 +2,7 @@ package primMST;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+
 public class Stack<Item> implements Iterable<Item> {
 	private int n;
 	private Node<Item> first;

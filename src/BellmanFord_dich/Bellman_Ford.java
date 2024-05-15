@@ -62,15 +62,15 @@ public class Bellman_Ford {
             throw new UnsupportedOperationException("Negative cost cycle exists");
         return distFrom[v];
     }
-    public boolean hasPathTo(int v) {
+    public boolean hasPathFrom(int v) {
         validateVertex(v);
         return distFrom[v] < Double.POSITIVE_INFINITY;
     }
-    public Iterable<DirectedEdge> pathTo(int v) {
+    public Iterable<DirectedEdge> pathFrom(int v) {
         validateVertex(v);
         if (hasNegativeCycle())
             throw new UnsupportedOperationException("Negative cost cycle exists");
-        if (!hasPathTo(v)) return null;
+        if (!hasPathFrom(v)) return null;
         Stack<DirectedEdge> tmp = new Stack<DirectedEdge>();
         Stack<DirectedEdge> path = new Stack<DirectedEdge>();
         for (DirectedEdge e = edgeFrom[v]; e != null; e = edgeFrom[e.to()]) {
@@ -87,7 +87,7 @@ public class Bellman_Ford {
             throw new IllegalArgumentException();
     }
     public static void main(String[] args) {
-    	String name = "\\Users\\User\\Desktop\\Javapro\\baitapTet\\src\\text.txt";
+    	String name = "src/BellmanFord_dich/text.txt";
 		EdgeWeightedDigraph g = new EdgeWeightedDigraph(name);
 		Bellman_Ford sp = new Bellman_Ford(g, 0);
 		if (sp.hasNegativeCycle()) {
@@ -95,9 +95,9 @@ public class Bellman_Ford {
                 System.out.print(e + " ");
         } else {
             for (int v = 0; v < g.V(); v++) {
-                if (sp.hasPathTo(v)) {
+                if (sp.hasPathFrom(v)) {
                 	System.out.println(v + " -> 0( " + sp.distFrom(v) + "): " );
-                    for (DirectedEdge e : sp.pathTo(v)) {
+                    for (DirectedEdge e : sp.pathFrom(v)) {
                         System.out.print(e + " ");
                     }
                     System.out.println();
